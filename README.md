@@ -31,7 +31,7 @@ Este é projeto é um sistema web desenvolvido com django que gerencia alunos de
 --
 
 # Como rodar o projeto Localmente.
-
+```
 -- 1. Clone o Repositório 
 ```bash
 git clone https://github.com/IsAparecida01/Django-Ia-Academia.git
