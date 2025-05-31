@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Desempenho do Cliente</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4">Desempenho de {{ cliente.nome }}</h1>
+
+        {% if relatorio %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    Dados do Cliente
+                </div>
+                <div class="card-body">
+                    <p><strong>Idade:</strong> {{ cliente.idade }}</p>
+                    <p><strong>Gênero:</strong> {{ cliente.genero }}</p>
+                    <p><strong>Email:</strong> {{ cliente.email }}</p>
+                    <p><strong>Telefone:</strong> {{ cliente.telefone }}</p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Último Relatório de Desempenho
+                </div>
+                <div class="card-body">
+                    <p><strong>Frequência semanal:</strong> {{ relatorio.frequencia }} dias</p>
+                    <p><strong>Estação:</strong> {{ relatorio.estacao }}</p>
+                    <p><strong>Objetivo Alcançado:</strong> {{ relatorio.objetivo_alcancado|yesno:"Sim,Não" }}</p>
+                    <p><strong>Satisfação:</strong> {{ relatorio.satisfacao }}/10</p>
+                    <p><strong>Lesões:</strong> {{ relatorio.lesoes|yesno:"Sim,Não" }}</p>
+                    <p><strong>Data:</strong> {{ relatorio.data }}</p>
+                </div>
+            </div>
+
+            <div class="alert alert-info fs-4 text-center">
+                 <strong>Chance de Desistência Estimada:</strong> {{ chance }}%
+            </div>
+        {% else %}
+            <div class="alert alert-warning">
+                Nenhum relatório de desempenho encontrado para este cliente.
+            </div>
+        {% endif %}
+
+        <a href="{% url 'clientes:home' %}" class="btn btn-secondary mt-3">Voltar à lista de clientes</a>
+    </div>
+</body>
+</html>
